@@ -91,23 +91,6 @@ K --> L["📚 Recursos"]
 
 ---
 
-# 🚀 Roadmap
-
-- [ ] Conceptos
-- [ ] Arquitectura
-- [ ] Controles
-- [ ] Patrones de Seguridad
-- [ ] Validación
-- [ ] Herramientas
-- [ ] Playbooks
-- [ ] Checklists
-- [ ] Laboratorios
-- [ ] Casos Reales
-- [ ] Estándares
-- [ ] Recursos
-
----
-
 # 💡 Filosofía del proyecto
 
 La seguridad de una aplicación no depende únicamente de detectar vulnerabilidades.
@@ -120,27 +103,8 @@ Cada documento se relaciona con otros conceptos del repositorio para construir u
 
 ---
 
-# 📚 Bibliografía
-
-Todo el contenido de este repositorio se basa en documentación pública y fuentes ampliamente reconocidas por la industria.
-
-La bibliografía se encuentra organizada por categorías dentro de la carpeta **Recursos**, incluyendo:
-
-- 📖 Libros
-- 🏛 Documentación Oficial
-- 📐 Estándares y Frameworks
-- 🎓 Cursos
-- 🎥 Conferencias
-- 📝 Blogs Técnicos
-- 📄 Papers
-- 🎙 Podcasts
-
-➡️ **Ver bibliografía completa:** [`Recursos`](./Recursos)
-
----
-
 ## ⭐ ¿Te resultó útil?
 
 Si este proyecto te resulta útil, podés marcar el repositorio con una ⭐ para seguir su evolución.
 
-Toda sugerencia o corrección es bienvenida mediante **Issues** o **Pull Requests**.
+Toda sugerencia o corrección es bienvenida
