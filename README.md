@@ -96,7 +96,7 @@ La seguridad de una aplicación no depende únicamente de detectar vulnerabilida
 
 Comprender **por qué ocurren**, **cómo prevenirlas**, **qué controles las mitigan** y **cómo validarlas** es lo que permite construir software más seguro.
 
-Este repositorio busca organizar ese conocimiento de forma clara, consistente y reutilizable.
+Este repositorio busca organizar ese conocimiento
 
 Cada documento se relaciona con otros conceptos del repositorio para construir una base de conocimiento interconectada.
 
