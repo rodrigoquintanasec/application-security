@@ -6,7 +6,7 @@
 
 ## 👋 Bienvenido
 
-Este repositorio reúne documentación técnica, ejemplos prácticos y recursos relacionados con **Application Security**.
+Si llegaste aquí, este repositorio representa mi base de documentación técnica, ejemplos prácticos y recursos relacionados con **Application Security**.
 
 Su objetivo es organizar el conocimiento desde una perspectiva práctica, conectando conceptos, controles de seguridad, patrones, herramientas y laboratorios para facilitar su comprensión y aplicación en escenarios reales.
 
