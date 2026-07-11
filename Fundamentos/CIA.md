@@ -1,4 +1,4 @@
-# 🔒 CIA (Confidentiality, Integrity & Availability)
+# 🔒 CIA in Application Security
 
 > La tríada CIA (Confidentiality, Integrity & Availability) constituye uno de los modelos fundamentales para definir los objetivos de seguridad de la información y sirve como base para el diseño y la evaluación de controles de seguridad en aplicaciones y sistemas.
 
