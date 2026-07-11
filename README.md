@@ -1,17 +1,25 @@
 # Application Security
 
-📊 ¿Qué vas a encontrar?
+📚 Guías Técnicas
+0
 
-📚 0 Guías Técnicas
+🧪 Laboratorios
+0
 
-🧪 0 Laboratorios
+🛡 Patrones de Seguridad
+0
 
-🛡 0 Vulnerabilidades y Mitigaciones
+📋 Playbooks
+1
 
-✅ 0 Checklists
+✅ Checklists
+0
 
-📋 1 Playbooks
+🛠 Herramientas
+0
 
-🛠 0 Herramientas
+📖 Casos Reales
+0
 
-📖 Proyecto Vivo
+🔄 Proyecto Activo
+Actualizado continuamente.
