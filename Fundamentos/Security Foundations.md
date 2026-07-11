@@ -173,7 +173,6 @@ Este documento sintetiza conceptos ampliamente utilizados por la industria y des
 - OWASP Developer Guide
 - CISA — *Secure by Design / Secure by Default*
 - Microsoft Security Development Lifecycle (SDL)
-- *Alice & Bob Learn Application Security* – Chapter 1. :contentReference[oaicite:0]{index=0}
 
 ---
 
