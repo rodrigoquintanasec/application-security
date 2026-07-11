@@ -73,20 +73,22 @@ K --> L["📚 Recursos"]
 
 # 🧭 Explorar el repositorio
 
-| Sección | Descripción |
-|----------|-------------|
-| 📚 **Conceptos** | Fundamentos y principios sobre los que se construye la seguridad de las aplicaciones. |
-| 🏗 **Arquitectura** | Diseño seguro de aplicaciones antes de comenzar el desarrollo. |
-| 🛡 **Controles** | Mecanismos utilizados para proteger aplicaciones y reducir riesgos. |
-| ⚠ **Patrones de Seguridad** | Vulnerabilidades, malas prácticas y estrategias de mitigación. |
-| 🔍 **Validación** | Métodos para verificar la seguridad de una aplicación. |
-| 🛠 **Herramientas** | Herramientas utilizadas durante el ciclo de vida de Application Security. |
-| 📋 **Playbooks** | Procedimientos paso a paso para actividades habituales de AppSec. |
-| ✅ **Checklists** | Listas de verificación reutilizables para revisiones técnicas. |
-| 🧪 **Laboratorios** | Escenarios prácticos para poner en práctica los conocimientos. |
-| 📖 **Casos Reales** | Análisis técnico de incidentes y vulnerabilidades conocidas. |
-| 📐 **Estándares** | Marcos de referencia utilizados por la industria. |
-| 📚 **Recursos** | Bibliografía, documentación oficial y material recomendado. |
+Seleccioná una categoría para comenzar.
+
+| Categoría | Descripción |
+|-----------|-------------|
+| 📚 **[Fundamentos](./Fundamentos)** | Principios y conceptos fundamentales sobre los que se construye Application Security. |
+| 🏗 **[Arquitectura](./Arquitectura)** | Diseño de aplicaciones seguras, Threat Modeling y patrones de arquitectura. |
+| 🛡 **[Controles](./Controles)** | Mecanismos utilizados para proteger aplicaciones y reducir riesgos. |
+| ⚠ **[Patrones de Seguridad](./Patrones-de-Seguridad)** | Vulnerabilidades, malas prácticas y estrategias de mitigación. |
+| 🔍 **[Validación](./Validacion)** | Métodos para verificar la seguridad de una aplicación. |
+| 🛠 **[Herramientas](./Herramientas)** | Herramientas utilizadas durante el ciclo de vida de Application Security. |
+| 📋 **[Playbooks](./Playbooks)** | Procedimientos paso a paso para actividades habituales de AppSec. |
+| ✅ **[Checklists](./Checklists)** | Listas de verificación para revisiones técnicas. |
+| 🧪 **[Laboratorios](./Laboratorios)** | Escenarios prácticos para aplicar los conocimientos. |
+| 📖 **[Casos Reales](./Casos-Reales)** | Análisis de vulnerabilidades e incidentes relevantes. |
+| 📐 **[Estándares](./Estandares)** | OWASP, NIST, CWE, CAPEC y otros marcos de referencia. |
+| 📚 **[Recursos](./Recursos)** | Bibliografía, documentación oficial y material recomendado. |
 
 ---
 
