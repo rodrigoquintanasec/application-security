@@ -1,6 +1,6 @@
 # Página 1
 
-# 🎯 Security Objectives
+# 🎯 Introduction to Security Foundations
 
 > Los **Security Objectives** representan las propiedades de seguridad que una organización espera preservar sobre sus activos. Constituyen el fundamento sobre el cual se construyen los requisitos de seguridad, se evalúan los riesgos y se seleccionan los controles que protegerán una aplicación durante todo su ciclo de vida.
 
