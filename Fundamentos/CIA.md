@@ -12,7 +12,7 @@ Comprender los objetivos de seguridad definidos por la tríada CIA y cómo estos
 
 # 📖 Resumen
 
-La tríada CIA es uno de los modelos más utilizados para evaluar los objetivos de seguridad de un sistema.
+La tríada CIA define los principales objetivos de seguridad utilizados para proteger la información y los sistemas.
 
 Todo control de seguridad puede justificarse en función de uno o más objetivos de la tríada CIA.
 
