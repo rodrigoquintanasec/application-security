@@ -69,7 +69,6 @@ J --> K["📐 Estándares"]
 
 K --> L["📚 Recursos"]
 ```
-Cada sección del repositorio se encuentra relacionada con las demás para facilitar la navegación y comprender cómo los distintos aspectos de Application Security se complementan entre sí.
 ---
 
 # 🧭 Explorar el repositorio
