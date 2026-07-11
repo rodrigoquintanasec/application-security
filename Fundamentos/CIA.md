@@ -1,12 +1,12 @@
 # 🔒 CIA (Confidentiality, Integrity & Availability)
 
-> La tríada CIA representa los tres principios fundamentales sobre los que se construye la seguridad de la información y, por extensión, la seguridad de las aplicaciones.
+> La tríada CIA (Confidentiality, Integrity & Availability) constituye uno de los modelos fundamentales para definir los objetivos de seguridad de la información y sirve como base para el diseño y la evaluación de controles de seguridad en aplicaciones y sistemas.
 
 ---
 
 # 🎯 Objetivo
 
-Comprender los principios de **Confidencialidad**, **Integridad** y **Disponibilidad**, y cómo influyen en el diseño, desarrollo y protección de aplicaciones.
+Comprender los objetivos de seguridad definidos por la tríada CIA y cómo estos influyen en el diseño de arquitecturas, controles de seguridad y aplicaciones.
 
 ---
 
@@ -14,7 +14,7 @@ Comprender los principios de **Confidencialidad**, **Integridad** y **Disponibil
 
 La tríada CIA es uno de los modelos más utilizados para evaluar los objetivos de seguridad de un sistema.
 
-Todo control de seguridad implementado en una aplicación busca proteger uno o más de estos principios.
+Todo control de seguridad puede justificarse en función de uno o más objetivos de la tríada CIA.
 
 | Pilar | Objetivo |
 |--------|----------|
@@ -28,7 +28,7 @@ Todo control de seguridad implementado en una aplicación busca proteger uno o m
 
 ## ¿Qué protege?
 
-La información solo debe ser accesible para usuarios, sistemas o procesos autorizados.
+La información debe ser accesible únicamente para sujetos autorizados, evitando tanto la divulgación como el acceso no autorizado.
 
 ### Ejemplos
 
@@ -44,6 +44,9 @@ La información solo debe ser accesible para usuarios, sistemas o procesos autor
 - Authorization
 - Encryption
 - Secrets Management
+- Key Management
+- Data Classification
+- Access Control
 
 ---
 
@@ -51,7 +54,7 @@ La información solo debe ser accesible para usuarios, sistemas o procesos autor
 
 ## ¿Qué protege?
 
-Garantiza que la información permanezca correcta, completa y sin modificaciones no autorizadas.
+Garantiza que la información permanezca exacta, consistente y protegida frente a modificaciones no autorizadas durante todo su ciclo de vida.
 
 ### Ejemplos
 
@@ -66,6 +69,9 @@ Garantiza que la información permanezca correcta, completa y sin modificaciones
 - Digital Signatures
 - Input Validation
 - Audit Logs
+- Message Authentication Codes (MAC)
+- Checksums
+- Database Constraints
 
 ---
 
@@ -89,6 +95,11 @@ Garantiza que los sistemas y la información puedan utilizarse cuando sean neces
 - Load Balancing
 - Monitoring
 - Disaster Recovery
+- Redundancy
+- Fault Tolerance
+- Auto Scaling
+- Rate Limiting
+- Capacity Planning
 
 ---
 
@@ -99,18 +110,17 @@ Supongamos una aplicación bancaria.
 | Situación | Pilar afectado |
 |-----------|----------------|
 | Un usuario accede a cuentas ajenas | 🔒 Confidentiality |
-| Un atacante modifica el saldo de una cuenta | ✅ Integrity |
+| Una vulnerabilidad permite alterar el saldo de una cuenta. | ✅ Integrity |
 | El sistema deja de responder por un ataque DoS | ⚙️ Availability |
 
 Una misma vulnerabilidad puede afectar más de un principio al mismo tiempo.
 
 ---
-
 # 🔗 Relación con Application Security
 
-La tríada CIA se utiliza durante todo el ciclo de vida del desarrollo seguro.
+En Application Security, la tríada CIA actúa como un marco de referencia para identificar activos críticos, definir *security requirements* y seleccionar e implementar controles de seguridad durante todo el Software Development Lifecycle (SDLC).
 
-Por ejemplo:
+Estos principios están presentes en múltiples actividades del ciclo de desarrollo, por ejemplo:
 
 - Threat Modeling
 - Secure Design
@@ -118,7 +128,7 @@ Por ejemplo:
 - Security Testing
 - Risk Assessment
 
-Comprender estos principios permite seleccionar controles de seguridad adecuados y evaluar correctamente el impacto de una vulnerabilidad.
+Comprender cómo una vulnerabilidad impacta la **Confidentiality**, **Integrity** y/o **Availability** permite priorizar riesgos, seleccionar controles adecuados y tomar decisiones de diseño más informadas.
 
 ---
 
