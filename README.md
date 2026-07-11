@@ -47,7 +47,7 @@ Repositorio actualizado continuamente con nuevo contenido y mejoras.
 ```mermaid
 flowchart TD
 
-A["📚 Conceptos"] --> B["🏗 Arquitectura"]
+A["📚 Fundamentos"] --> B["🏗 Arquitectura"]
 
 B --> C["🛡 Controles"]
 
