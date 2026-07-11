@@ -615,4 +615,736 @@ Comprender correctamente las amenazas constituye uno de los pilares del **Threat
 
 ---
 
-> 📖 **Próxima sección:** [Vulnerabilities](06-Vulnerabilities.md)
+---
+---
+---
+---
+
+# Página 4
+
+# 🐞 Vulnerabilities: comprendiendo dónde puede fallar el sistema
+
+Una vez identificados los activos y las amenazas que podrían afectarlos, la siguiente pregunta es:
+
+> **¿Qué debilidades podrían permitir que esas amenazas se materialicen?**
+
+En Application Security, esta pregunta permite pasar de escenarios potenciales a condiciones concretas de la aplicación que pueden ser explotadas.
+
+Una amenaza representa aquello que podría salir mal.
+
+Una **vulnerabilidad (Vulnerability)** representa una condición que puede permitir que ese escenario ocurra.
+
+Comprender esta diferencia evita tratar cada hallazgo técnico como un riesgo crítico y permite concentrar los esfuerzos de remediación en las debilidades que realmente exponen activos de valor.
+
+---
+
+# 📖 ¿Qué es una Vulnerability?
+
+Desde una perspectiva de seguridad, una **Vulnerability** es una debilidad presente en el diseño, la implementación, la configuración o la operación de un sistema que puede ser explotada o activada por una fuente de amenaza.
+
+En una aplicación, una vulnerabilidad puede existir en diferentes niveles:
+
+- Arquitectura.
+- Diseño.
+- Código fuente.
+- Configuración.
+- Dependencias.
+- Infraestructura.
+- Procesos operativos.
+- Controles de seguridad.
+
+Esto significa que las vulnerabilidades no son exclusivamente errores de programación.
+
+Una aplicación cuyo código no contiene fallas evidentes aún puede ser vulnerable debido a una decisión de diseño insegura, una configuración incorrecta o un control de acceso insuficiente.
+
+---
+
+# 🧩 Weakness vs Vulnerability
+
+Los términos **Weakness** y **Vulnerability** suelen utilizarse indistintamente, pero representan niveles de abstracción diferentes.
+
+Una **Weakness** describe un tipo de error o condición que puede introducir problemas de seguridad.
+
+Una **Vulnerability** es una instancia concreta de una debilidad dentro de un producto, componente o sistema determinado que puede generar un impacto negativo.
+
+```text
+Weakness
+    │
+    ▼
+Patrón de error
+    │
+    ▼
+Implementación concreta
+    │
+    ▼
+Vulnerability
+```
+
+Por ejemplo:
+
+| Concepto | Ejemplo |
+|----------|---------|
+| Weakness | Falta de validación adecuada sobre datos no confiables |
+| Vulnerability | Un parámetro específico de una API permite ejecutar una SQL Injection |
+| Impacto posible | Lectura o modificación no autorizada de información |
+
+La distinción es importante porque permite trabajar en dos niveles diferentes:
+
+- Corregir una vulnerabilidad elimina una instancia concreta del problema.
+- Eliminar la debilidad del proceso de desarrollo ayuda a evitar que el mismo tipo de problema vuelva a introducirse.
+
+Desde una perspectiva de AppSec madura, no alcanza con corregir findings individuales. También resulta necesario identificar los patrones de ingeniería que los producen.
+
+---
+
+# 🗂️ CWE y CVE no representan lo mismo
+
+Dos de los identificadores más utilizados en la industria son **CWE** y **CVE**.
+
+Aunque están relacionados, cumplen funciones diferentes.
+
+## CWE — Common Weakness Enumeration
+
+**CWE** clasifica tipos comunes de debilidades de software y hardware.
+
+Ejemplos:
+
+- `CWE-79` — Improper Neutralization of Input During Web Page Generation.
+- `CWE-89` — Improper Neutralization of Special Elements Used in an SQL Command.
+- `CWE-798` — Use of Hard-coded Credentials.
+- `CWE-862` — Missing Authorization.
+
+CWE responde principalmente a la pregunta:
+
+> **¿Qué clase de debilidad permitió que apareciera el problema?**
+
+## CVE — Common Vulnerabilities and Exposures
+
+**CVE** identifica vulnerabilidades públicamente divulgadas en productos o componentes concretos.
+
+Un registro CVE permite que fabricantes, equipos de seguridad, herramientas y organizaciones se refieran de manera consistente a la misma vulnerabilidad.
+
+CVE responde principalmente a la pregunta:
+
+> **¿Qué vulnerabilidad específica fue identificada en un producto determinado?**
+
+La relación puede representarse de la siguiente manera:
+
+```text
+CWE
+Tipo de debilidad
+      │
+      ▼
+CVE
+Instancia conocida en un producto
+```
+
+No todas las vulnerabilidades de una aplicación tienen un CVE.
+
+Las fallas encontradas en código desarrollado internamente, por ejemplo, pueden ser vulnerabilidades reales aunque nunca sean publicadas ni reciban un identificador CVE.
+
+---
+
+# 🔍 Vulnerability vs Finding
+
+Otro error frecuente consiste en asumir que cada resultado generado por una herramienta representa automáticamente una vulnerabilidad confirmada.
+
+No es así.
+
+Un **Finding** es una observación que requiere análisis.
+
+Puede terminar clasificado como:
+
+- True Positive.
+- False Positive.
+- Accepted Risk.
+- Informational Finding.
+- Security Improvement.
+- Vulnerability confirmada.
+
+Por ejemplo, una herramienta SAST puede detectar la construcción dinámica de una consulta SQL.
+
+Sin embargo, antes de confirmar una vulnerabilidad es necesario analizar:
+
+- Si el dato puede ser controlado por un usuario.
+- Si atraviesa validaciones o transformaciones.
+- Si se utilizan consultas parametrizadas.
+- Si el flujo es alcanzable.
+- Si la operación se ejecuta con privilegios relevantes.
+- Si existe un activo que pueda verse comprometido.
+
+```text
+Scanner Result
+      │
+      ▼
+Technical Validation
+      │
+      ▼
+Exploitability Analysis
+      │
+      ▼
+Business Context
+      │
+      ▼
+Confirmed Vulnerability
+```
+
+Las herramientas proporcionan evidencia y puntos de investigación.
+
+La decisión final requiere contexto técnico y de negocio.
+
+---
+
+# ⚠️ Vulnerability no es lo mismo que Risk
+
+Una vulnerabilidad no representa por sí sola el riesgo completo.
+
+Para evaluar su relevancia deben considerarse otros elementos:
+
+- El activo afectado.
+- La amenaza asociada.
+- La posibilidad de explotación.
+- Los privilegios necesarios.
+- La exposición del componente.
+- Los controles existentes.
+- El impacto técnico.
+- El impacto para el negocio.
+
+Dos aplicaciones pueden contener la misma debilidad y, aun así, presentar niveles de riesgo completamente diferentes.
+
+Por ejemplo, una vulnerabilidad de SQL Injection en un entorno de laboratorio aislado no presenta el mismo riesgo que una vulnerabilidad equivalente en una API pública que procesa operaciones financieras.
+
+```text
+Vulnerability
+      +
+Threat Context
+      +
+Asset Value
+      +
+Likelihood
+      +
+Business Impact
+      =
+Risk
+```
+
+La severidad técnica representa una entrada para la evaluación.
+
+No reemplaza el análisis de riesgo.
+
+---
+
+# 🧱 Origen de las vulnerabilidades
+
+Las vulnerabilidades pueden introducirse en cualquier etapa del Software Development Lifecycle (SDLC).
+
+| Etapa | Ejemplo |
+|-------|---------|
+| Requirements | No definir requisitos de autorización para operaciones sensibles |
+| Design | Confiar en validaciones realizadas únicamente en el cliente |
+| Development | Concatenar datos no confiables en una consulta SQL |
+| Build | Incorporar una dependencia vulnerable |
+| Deployment | Publicar una interfaz administrativa en Internet |
+| Operations | Mantener credenciales expuestas o componentes sin actualizar |
+
+Esta distribución demuestra por qué Application Security no puede reducirse a escanear código antes de llegar a producción.
+
+Una parte significativa de las vulnerabilidades tiene su origen en decisiones tomadas antes de que el código sea escrito o después de que la aplicación haya sido desplegada.
+
+---
+
+# 🐛 Security Bug vs Design Flaw
+
+Desde una perspectiva de ingeniería, resulta útil distinguir entre un **Security Bug** y un **Design Flaw**.
+
+## Security Bug
+
+Es un error introducido durante la implementación.
+
+Ejemplos:
+
+- Una salida no codificada correctamente.
+- Una comparación insegura de tokens.
+- Una validación de longitud ausente.
+- Una consulta construida mediante concatenación.
+
+## Design Flaw
+
+Es una debilidad que surge de una decisión incorrecta en la arquitectura o en el diseño del sistema.
+
+Ejemplos:
+
+- Confiar en el frontend para autorizar operaciones.
+- Utilizar una cuenta compartida para múltiples servicios.
+- No separar funciones administrativas de operaciones regulares.
+- Permitir que un único componente acceda a todos los datos de la plataforma.
+
+| Característica | Security Bug | Design Flaw |
+|----------------|--------------|-------------|
+| Origen habitual | Implementación | Arquitectura o diseño |
+| Detección | SAST, DAST, Code Review | Threat Modeling, Architecture Review |
+| Alcance | Generalmente localizado | Puede afectar múltiples componentes |
+| Remediación | Cambio de código específico | Rediseño parcial o completo |
+
+Las herramientas automatizadas suelen tener mayor capacidad para detectar errores de implementación que fallas de diseño.
+
+Por ese motivo, actividades como **Threat Modeling**, **Secure Design Review** y **Architecture Risk Analysis** resultan necesarias incluso cuando existe una cobertura amplia de SAST, DAST o SCA.
+
+---
+
+# 🧬 First-Party y Third-Party Vulnerabilities
+
+Las vulnerabilidades pueden originarse tanto en código propio como en componentes externos.
+
+## First-Party Vulnerabilities
+
+Se encuentran en código, configuraciones o diseños creados por la propia organización.
+
+Ejemplos:
+
+- Broken Access Control.
+- Business Logic Flaws.
+- Insecure Direct Object References.
+- Validación insuficiente.
+- Gestión insegura de sesiones.
+
+## Third-Party Vulnerabilities
+
+Se encuentran en componentes incorporados a la aplicación.
+
+Ejemplos:
+
+- Librerías.
+- Frameworks.
+- Imágenes de contenedores.
+- Paquetes del sistema operativo.
+- Plugins.
+- SDKs.
+- Servicios externos.
+
+Cuando una aplicación incorpora una dependencia, también incorpora parte del riesgo asociado a ese componente y a su cadena de dependencias.
+
+Esto no significa que todas las vulnerabilidades reportadas en una dependencia sean explotables dentro de la aplicación.
+
+Para determinar su relevancia es necesario evaluar:
+
+- Si la versión vulnerable está realmente desplegada.
+- Si la funcionalidad afectada se utiliza.
+- Si el código vulnerable es alcanzable.
+- Si existe exposición suficiente para explotarlo.
+- Si hay controles que reduzcan la posibilidad o el impacto.
+
+---
+
+# 🏛️ Architecture Perspective
+
+> 💡 **Una vulnerabilidad localizada puede generar un compromiso sistémico.**
+
+La ubicación inicial de una vulnerabilidad no determina necesariamente el alcance final del incidente.
+
+Una debilidad aparentemente limitada al frontend, una API o un pipeline puede permitir acceder progresivamente a activos más críticos.
+
+```text
+Exposed Secret
+      │
+      ▼
+CI/CD Access
+      │
+      ▼
+Artifact Modification
+      │
+      ▼
+Production Deployment
+      │
+      ▼
+Application Compromise
+```
+
+En este escenario, el problema inicial puede parecer una simple exposición de credenciales.
+
+Sin embargo, la arquitectura y los privilegios asociados permiten convertir esa exposición en un compromiso de la cadena de suministro y del entorno productivo.
+
+Por este motivo, el análisis de una vulnerabilidad debe considerar:
+
+- Las relaciones entre componentes.
+- Los Trust Boundaries.
+- Las identidades involucradas.
+- Los privilegios disponibles.
+- Las rutas de escalamiento.
+- El radio de impacto o **Blast Radius**.
+
+Un finding debe analizarse dentro de la arquitectura completa, no únicamente dentro del componente donde fue descubierto.
+
+---
+
+# 💡 Pensar como un Application Security Engineer
+
+Cuando se identifica una posible vulnerabilidad, un Application Security Engineer no debería limitarse a preguntar:
+
+> **¿Qué severidad le asignó la herramienta?**
+
+También debería analizar:
+
+- ¿Cuál es la causa raíz?
+- ¿Qué activo puede verse comprometido?
+- ¿Qué Threat Source podría explotarla?
+- ¿El flujo vulnerable es realmente alcanzable?
+- ¿Qué condiciones deben cumplirse?
+- ¿Qué privilegios necesita el atacante?
+- ¿Qué Trust Boundaries puede atravesar?
+- ¿Existen controles preventivos o compensatorios?
+- ¿Cuál es el Blast Radius?
+- ¿El problema puede repetirse en otros componentes?
+- ¿La remediación corrige la causa raíz o solo esta instancia?
+
+Estas preguntas permiten diferenciar la gestión superficial de findings de un verdadero proceso de ingeniería de seguridad.
+
+---
+
+# 🔗 Relación con otros conceptos
+
+Las vulnerabilidades constituyen el punto de conexión entre una amenaza potencial y un riesgo concreto.
+
+```text
+Assets
+    │
+    ▼
+Threat Sources
+    │
+    ▼
+Threats
+    │
+    ▼
+Vulnerabilities
+    │
+    ▼
+Likelihood + Impact
+    │
+    ▼
+Risk
+    │
+    ▼
+Security Objectives
+    │
+    ▼
+Security Controls
+```
+
+Sin una vulnerabilidad o condición explotable, una amenaza puede no materializarse.
+
+Sin un activo de valor y un impacto asociado, una vulnerabilidad puede no representar un riesgo relevante para el negocio.
+
+---
+
+## 📌 Key Takeaways
+
+- Una vulnerabilidad es una debilidad que puede ser explotada o activada por una Threat Source.
+- Las vulnerabilidades pueden originarse en requisitos, diseño, código, dependencias, configuración u operación.
+- Una Weakness describe un tipo de error; una Vulnerability representa una instancia concreta.
+- CWE clasifica debilidades, mientras que CVE identifica vulnerabilidades públicamente divulgadas.
+- Un resultado de una herramienta es un Finding hasta que sea validado y contextualizado.
+- Vulnerability, Severity y Risk no son conceptos equivalentes.
+- Las fallas de diseño requieren Threat Modeling y revisiones de arquitectura, no únicamente scanners.
+- El análisis debe considerar la causa raíz, la explotabilidad, los activos afectados y el Blast Radius.
+
+---
+
+## 📚 Referencias
+
+- [NIST CSRC Glossary — Vulnerability](https://csrc.nist.gov/glossary/term/vulnerability)
+- [NIST CSRC Glossary — Software Vulnerability](https://csrc.nist.gov/glossary/term/software_vulnerability)
+- [NIST SP 800-30 Rev. 1 — Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
+- [NIST SP 800-115 — Technical Guide to Information Security Testing and Assessment](https://csrc.nist.gov/pubs/sp/800/115/final)
+- [CWE — Common Weakness Enumeration](https://cwe.mitre.org/)
+- [CVE Program — Overview](https://www.cve.org/about/overview)
+- [OWASP Vulnerability Management Guide](https://owasp.org/www-project-vulnerability-management-guide/)
+- [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
+- *Alice & Bob Learn Application Security* — capítulos sobre Secure Design, Secure Code, Common Pitfalls y Testing.
+
+---
+---
+---
+---
+---
+
+
+# Página 5
+
+
+# 📉 Risk: comprendiendo qué tan importante es un problema
+
+Una vez identificados los activos, las amenazas y las vulnerabilidades, surge una nueva pregunta.
+
+> **¿Qué problemas deberían resolverse primero?**
+
+En una aplicación real no todas las vulnerabilidades poseen la misma importancia.
+
+Tampoco todas las amenazas representan el mismo nivel de preocupación para una organización.
+
+El objetivo de la gestión del riesgo consiste precisamente en responder esa pregunta.
+
+Comprender el riesgo permite priorizar esfuerzos, asignar recursos y seleccionar controles de seguridad de manera proporcional al impacto que un incidente podría generar sobre el negocio.
+
+En Application Security, prácticamente todas las decisiones importantes terminan reduciéndose a una evaluación de riesgo.
+
+---
+
+# 📖 ¿Qué es el Risk?
+
+Desde la perspectiva de Application Security, el **Risk** representa la posibilidad de que una amenaza comprometa un activo explotando una vulnerabilidad y genere consecuencias negativas para la organización.
+
+En otras palabras, el riesgo no depende únicamente de la existencia de una vulnerabilidad.
+
+También depende del contexto en el que esa vulnerabilidad existe.
+
+Por ese motivo, dos aplicaciones pueden contener exactamente la misma debilidad y, sin embargo, presentar niveles de riesgo completamente diferentes.
+
+El riesgo siempre debe analizarse considerando:
+
+- El activo afectado.
+- La amenaza asociada.
+- La vulnerabilidad existente.
+- La probabilidad de explotación.
+- El impacto potencial para el negocio.
+
+---
+
+# 🧩 Vulnerability no es Risk
+
+Uno de los errores más frecuentes consiste en utilizar ambos términos como si fueran equivalentes.
+
+No lo son.
+
+Una vulnerabilidad describe una debilidad.
+
+El riesgo describe las consecuencias que esa debilidad podría generar bajo determinadas condiciones.
+
+Por ejemplo.
+
+Una aplicación interna contiene una SQL Injection.
+
+¿Representa un riesgo?
+
+La respuesta correcta es:
+
+> **Depende.**
+
+Depende de cuestiones como:
+
+- ¿Quién puede acceder a la aplicación?
+- ¿Qué información protege?
+- ¿Qué privilegios posee?
+- ¿Existen controles compensatorios?
+- ¿La vulnerabilidad es realmente explotable?
+- ¿Cuál sería el impacto para el negocio?
+
+La vulnerabilidad puede ser idéntica.
+
+El riesgo no.
+
+---
+
+# 🎯 El contexto cambia completamente el riesgo
+
+Consideremos dos aplicaciones.
+
+## Aplicación A
+
+- Laboratorio interno.
+- Sin información sensible.
+- Acceso únicamente desde una red aislada.
+
+Contiene una SQL Injection.
+
+---
+
+## Aplicación B
+
+- API pública.
+- Procesa pagos.
+- Disponible desde Internet.
+- Contiene información financiera.
+
+También posee una SQL Injection.
+
+---
+
+Desde una perspectiva técnica ambas aplicaciones contienen exactamente la misma vulnerabilidad.
+
+Sin embargo, el riesgo asociado es completamente diferente.
+
+Esto demuestra que el riesgo no depende únicamente del problema técnico.
+
+Depende del contexto del negocio.
+
+---
+
+# ⚖️ Factores que influyen sobre el riesgo
+
+Aunque diferentes metodologías utilizan distintos modelos de evaluación, la mayoría considera factores similares.
+
+| Factor | Pregunta |
+|----------|----------|
+| Asset Value | ¿Qué tan importante es el activo? |
+| Threat | ¿Quién podría intentar comprometerlo? |
+| Vulnerability | ¿Existe una debilidad explotable? |
+| Likelihood | ¿Qué probabilidad existe de explotación? |
+| Impact | ¿Qué consecuencias tendría? |
+| Existing Controls | ¿Qué controles reducen actualmente ese riesgo? |
+
+La combinación de estos elementos permite comprender la exposición real del sistema.
+
+---
+
+# 📊 Likelihood e Impact
+
+Es habitual encontrar representaciones simplificadas del riesgo como:
+
+```text
+Risk = Likelihood × Impact
+```
+
+Aunque esta aproximación resulta útil para comprender el concepto, en la práctica el análisis suele incorporar muchos más elementos.
+
+Por ejemplo:
+
+- Exposición del sistema.
+- Facilidad de explotación.
+- Capacidades del atacante.
+- Controles existentes.
+- Valor del activo.
+- Requisitos regulatorios.
+- Dependencias afectadas.
+
+Por este motivo, Application Security rara vez utiliza una única fórmula para representar el riesgo.
+
+---
+
+# 🏛️ Architecture Perspective
+
+> 💡 **La arquitectura modifica el riesgo incluso cuando la vulnerabilidad permanece igual.**
+
+Supongamos que una vulnerabilidad permite ejecutar código remoto.
+
+En una arquitectura monolítica, el atacante podría comprometer toda la aplicación.
+
+En una arquitectura basada en microservicios con identidades separadas, segmentación de red y privilegios mínimos, el mismo exploit podría afectar únicamente un servicio específico.
+
+La vulnerabilidad no cambió.
+
+La arquitectura sí.
+
+Y con ella cambió el riesgo.
+
+Por este motivo, una buena arquitectura constituye uno de los controles de seguridad más efectivos.
+
+---
+
+# 🧱 Riesgo técnico vs Riesgo de negocio
+
+Application Security actúa como un puente entre el mundo técnico y las necesidades del negocio.
+
+Por ese motivo resulta útil distinguir dos perspectivas diferentes.
+
+## Technical Risk
+
+Describe la probabilidad de explotación desde una perspectiva técnica.
+
+Por ejemplo:
+
+- Complejidad del exploit.
+- Accesibilidad del componente.
+- Privilegios requeridos.
+- Controles existentes.
+
+---
+
+## Business Risk
+
+Describe las consecuencias que tendría un incidente para la organización.
+
+Por ejemplo:
+
+- Pérdidas económicas.
+- Interrupción del negocio.
+- Daño reputacional.
+- Incumplimiento regulatorio.
+- Pérdida de clientes.
+
+Un Security Engineer necesita comprender ambas perspectivas para priorizar correctamente las actividades de remediación.
+
+---
+
+# 💡 Pensar como un Application Security Engineer
+
+Cuando un ingeniero de Application Security recibe un hallazgo crítico, rara vez comienza preguntando:
+
+> **¿Qué CVSS tiene?**
+
+Normalmente comienza preguntándose:
+
+- ¿Qué activo protege esta aplicación?
+- ¿Cuál sería el impacto para el negocio?
+- ¿Quién podría explotarlo?
+- ¿Qué controles existen actualmente?
+- ¿Qué tan probable es que ocurra?
+- ¿Cuál sería el Blast Radius?
+- ¿Debemos corregir inmediatamente o aceptar el riesgo?
+
+Estas preguntas permiten transformar una lista de vulnerabilidades en un proceso real de gestión del riesgo.
+
+---
+
+# 🔗 Relación con otros conceptos
+
+El riesgo conecta todos los conceptos vistos hasta el momento.
+
+```text
+Assets
+      │
+      ▼
+Threat Sources
+      │
+      ▼
+Threats
+      │
+      ▼
+Vulnerabilities
+      │
+      ▼
+Risk
+      │
+      ▼
+Security Objectives
+      │
+      ▼
+Security Controls
+```
+
+Comprender el riesgo permite seleccionar controles proporcionados, justificar inversiones en seguridad y priorizar aquellas actividades que generan mayor reducción del riesgo para la organización.
+
+---
+
+## 📌 Key Takeaways
+
+- Una vulnerabilidad no representa necesariamente un riesgo elevado.
+- El riesgo depende del contexto técnico y del negocio.
+- Dos aplicaciones con la misma vulnerabilidad pueden presentar riesgos completamente diferentes.
+- La arquitectura influye directamente sobre el nivel de riesgo.
+- Application Security busca reducir el riesgo, no eliminar todas las vulnerabilidades.
+- Toda decisión de seguridad debería estar respaldada por una evaluación de riesgo.
+
+---
+
+## 📚 Referencias
+
+- NIST SP 800-30 Rev.1 — Guide for Conducting Risk Assessments
+- NIST SP 800-37 Rev.2 — Risk Management Framework
+- NIST SP 800-160 Vol.1 — Systems Security Engineering
+- NIST CSRC Glossary — Risk
+- OWASP Risk Rating Methodology
+- OWASP ASVS
+- OWASP SAMM
+- Microsoft Security Development Lifecycle (SDL)
+- Microsoft Threat Modeling
+- *Alice & Bob Learn Application Security* — capítulos relacionados con diseño seguro y análisis de riesgos.
