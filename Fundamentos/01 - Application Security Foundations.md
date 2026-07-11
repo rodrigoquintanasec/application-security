@@ -1,180 +1,253 @@
 # Página 1
 
-# 🎯 Introduction to Security Foundations
+# 🛡️ Building a Security Mindset
 
-> Los **Security Objectives** representan las propiedades de seguridad que una organización espera preservar sobre sus activos. Constituyen el fundamento sobre el cual se construyen los requisitos de seguridad, se evalúan los riesgos y se seleccionan los controles que protegerán una aplicación durante todo su ciclo de vida.
+> **Application Security no consiste únicamente en corregir vulnerabilidades.**
+>
+> Consiste en comprender qué activos poseen valor para una organización, qué amenazas pueden afectarlos, qué riesgos representan y cómo diseñar aplicaciones capaces de protegerlos mediante decisiones de ingeniería fundamentadas.
+
+---
+
+# 👋 Bienvenido
+
+Durante muchos años, la seguridad del software fue considerada una actividad realizada al final del ciclo de desarrollo.
+
+Una vez desarrollada la aplicación, equipos especializados ejecutaban pruebas de penetración, revisiones de código o auditorías con el objetivo de identificar vulnerabilidades antes de la puesta en producción.
+
+Aunque estas actividades continúan siendo fundamentales, la evolución del desarrollo de software ha cambiado profundamente este paradigma.
+
+Hoy las organizaciones desarrollan aplicaciones distribuidas, consumen cientos de APIs, integran componentes Open Source, despliegan cambios varias veces al día mediante pipelines de CI/CD y ejecutan cargas de trabajo sobre múltiples plataformas Cloud.
+
+En este contexto, intentar descubrir todas las vulnerabilidades únicamente al final del desarrollo resulta insuficiente.
+
+La seguridad debe incorporarse desde las primeras decisiones de diseño y mantenerse durante todo el ciclo de vida del software.
+
+Este cambio de paradigma dio origen a disciplinas como:
+
+- Secure Software Development Lifecycle (Secure SDLC)
+- Threat Modeling
+- Secure by Design
+- DevSecOps
+- Security Architecture
+- Software Supply Chain Security
+
+Aunque cada una aborda problemas diferentes, todas comparten un mismo objetivo.
+
+**Construir software seguro desde el inicio, en lugar de intentar asegurar software que ya fue construido.**
 
 ---
 
 # 🎯 Objetivo
 
-Comprender qué son los **Security Objectives**, por qué representan el punto de partida de Application Security y cómo se relacionan con conceptos como **Assets**, **Threats**, **Vulnerabilities**, **Risk** y **Security Controls**.
+El propósito de este documento consiste en desarrollar el modelo mental utilizado por los equipos modernos de **Application Security**.
+
+Más que memorizar conceptos o tecnologías específicas, el objetivo es comprender cómo se relacionan los principales elementos que intervienen en la protección de una aplicación y cómo estos influyen en las decisiones de diseño, desarrollo y operación.
+
+Al finalizar este documento, el lector comprenderá los fundamentos necesarios para abordar disciplinas como:
+
+- Threat Modeling
+- Secure Design
+- Security Architecture
+- Secure Coding
+- Security Testing
+- DevSecOps
+- Risk Assessment
+
+Estos conceptos constituirán la base para el resto de los documentos de este repositorio.
 
 ---
 
-# 📖 Introducción
+# 🏛️ ¿Qué es realmente Application Security?
 
-Application Security suele asociarse con vulnerabilidades como **SQL Injection**, **Cross-Site Scripting (XSS)** o **Broken Access Control**.
+Con frecuencia, Application Security se asocia exclusivamente con actividades como:
 
-Sin embargo, desde una perspectiva de ingeniería, esas vulnerabilidades representan únicamente una parte del problema.
+- Pentesting
+- SAST
+- DAST
+- SCA
+- Revisiones de código
+- OWASP Top 10
 
-Antes de analizar vulnerabilidades, seleccionar herramientas o implementar controles, es necesario comprender **qué necesita ser protegido** y **por qué**.
+Aunque todas ellas forman parte de un programa moderno de seguridad, representan únicamente un subconjunto de la disciplina.
 
-Ese es precisamente el propósito de los **Security Objectives**.
+Application Security es una disciplina de ingeniería cuyo propósito consiste en ayudar a las organizaciones a diseñar, desarrollar, desplegar y mantener aplicaciones capaces de proteger los activos más importantes del negocio frente a amenazas razonablemente previsibles.
 
-Los objetivos de seguridad no describen tecnologías, productos ni mecanismos de protección.
+Su objetivo no consiste únicamente en encontrar vulnerabilidades.
 
-Describen las propiedades que un sistema debe preservar para que continúe siendo confiable desde la perspectiva del negocio.
+Su verdadero objetivo consiste en reducir el riesgo asociado al software durante todo su ciclo de vida.
 
-Esta distinción resulta fundamental.
-
-Por ejemplo, **Encryption**, **Multi-Factor Authentication (MFA)**, **Input Validation** o un **Web Application Firewall (WAF)** no son objetivos de seguridad.
-
-Son mecanismos utilizados para proteger determinados objetivos.
-
-Comprender esta diferencia permite tomar decisiones de seguridad basadas en riesgo y no únicamente en la implementación de tecnologías.
-
----
-
-# 🏗️ El punto de partida de Application Security
-
-En Application Security, la seguridad no comienza con una vulnerabilidad.
-
-Tampoco comienza con un control.
-
-Comienza con un **activo**.
-
-Toda aplicación existe para procesar, almacenar o transmitir información que posee algún valor para una organización.
-
-Ese valor puede encontrarse en diferentes tipos de activos, por ejemplo:
-
-- Información financiera.
-- Datos personales (PII).
-- Historias clínicas.
-- Credenciales.
-- Propiedad intelectual.
-- Secretos comerciales.
-- APIs críticas.
-- Procesos de negocio.
-
-Si un activo pierde valor como consecuencia de un incidente de seguridad, el negocio experimenta algún tipo de impacto.
-
-Por ese motivo, el objetivo de Application Security no consiste únicamente en encontrar vulnerabilidades.
-
-Su propósito es proteger aquellos activos cuyo compromiso tendría consecuencias para la organización.
+Por este motivo, un programa maduro de Application Security combina personas, procesos, arquitectura, automatización y controles técnicos para construir aplicaciones resilientes desde las primeras etapas del desarrollo.
 
 ---
 
-# 🧩 Security Objectives como parte del proceso de diseño
+# 🌍 ¿Por qué Application Security es importante?
 
-Un error frecuente consiste en pensar inmediatamente en tecnologías de seguridad durante las primeras etapas de un proyecto.
+El software se ha convertido en uno de los activos más importantes de cualquier organización.
 
-Preguntas como las siguientes suelen aparecer muy temprano:
+Aplicaciones web, plataformas móviles, APIs, sistemas internos y servicios Cloud soportan procesos críticos como:
 
-- ¿Necesitamos cifrar la base de datos?
-- ¿Deberíamos implementar MFA?
-- ¿Hace falta un WAF?
-- ¿Necesitamos un SIEM?
-- ¿Conviene utilizar OAuth?
+- Operaciones financieras.
+- Atención al cliente.
+- Comercio electrónico.
+- Gestión de identidades.
+- Procesamiento de información sensible.
+- Integración con terceros.
 
-Todas estas preguntas son válidas.
+Como consecuencia, un incidente de seguridad ya no representa únicamente un problema técnico.
 
-Sin embargo, ninguna puede responderse correctamente hasta comprender primero qué propiedades necesitan preservarse sobre los activos del sistema.
+Puede generar pérdidas económicas, interrupciones operativas, incumplimientos regulatorios, daño reputacional e incluso comprometer la continuidad del negocio.
 
-Desde una perspectiva de arquitectura, el proceso de análisis suele seguir un orden similar al siguiente.
-
-```text
-Comprender el negocio
-          │
-          ▼
-Identificar los activos
-          │
-          ▼
-Identificar amenazas
-          │
-          ▼
-Identificar vulnerabilidades
-          │
-          ▼
-Evaluar riesgos
-          │
-          ▼
-Definir Security Objectives
-          │
-          ▼
-Seleccionar Security Controls
-```
-
-Este enfoque permite justificar cada decisión técnica en función del riesgo que intenta reducir y evita incorporar controles innecesarios o insuficientes.
+En este contexto, Application Security deja de ser una preocupación exclusiva de los equipos de seguridad y pasa a convertirse en una responsabilidad compartida entre arquitectos, desarrolladores, líderes técnicos, equipos DevOps y especialistas en seguridad.
 
 ---
 
-# 💡 Pensar como un Application Security Engineer
+# 🧠 Cambiando la forma de pensar
 
-Una diferencia importante entre un enfoque reactivo y uno orientado al diseño consiste en el orden en que se analizan los problemas.
+Una diferencia importante entre un enfoque tradicional y un enfoque moderno de Application Security consiste en el orden en que se analizan los problemas.
 
 Un enfoque reactivo suele comenzar preguntando:
 
-> **¿Cómo evitamos SQL Injection?**
+> **¿Qué vulnerabilidades tiene la aplicación?**
 
-Un ingeniero de Application Security normalmente comienza con una pregunta diferente.
+Un Application Security Engineer normalmente comienza con una pregunta diferente.
 
-> **¿Qué activo estamos intentando proteger?**
+> **¿Qué activos poseen mayor valor para el negocio?**
 
-A partir de esa respuesta resulta posible identificar:
+A partir de esa respuesta resulta posible comprender:
 
-- Las amenazas que afectan al activo.
-- Las vulnerabilidades que podrían ser explotadas.
-- El riesgo asociado.
-- El impacto para el negocio.
-- Los objetivos de seguridad que deben preservarse.
-- Los controles necesarios para reducir ese riesgo.
+- Qué amenazas representan un riesgo real.
+- Qué vulnerabilidades podrían permitir esos escenarios.
+- Qué impacto tendría un incidente.
+- Qué nivel de riesgo resulta aceptable.
+- Qué objetivos de seguridad deben preservarse.
+- Qué controles reducen ese riesgo de manera efectiva.
 
-Este cambio de perspectiva transforma la seguridad de una actividad basada en vulnerabilidades hacia una disciplina de ingeniería orientada al riesgo y al diseño seguro.
-
-Es precisamente esta forma de razonamiento la que sustenta actividades como **Threat Modeling**, **Secure Design**, **Risk Assessment** y **Security Architecture**.
+La seguridad deja de ser una actividad basada exclusivamente en vulnerabilidades y pasa a convertirse en un proceso continuo de toma de decisiones fundamentado en riesgo, arquitectura y contexto de negocio.
 
 ---
 
-Los conceptos desarrollados en este documento constituyen la base sobre la cual se construyen el resto de los temas de este repositorio.
+# 🏗️ El modelo mental de Application Security
 
-En los próximos capítulos profundizaremos en cada uno de ellos.
+La mayor parte de las decisiones de seguridad pueden comprenderse mediante un modelo relativamente sencillo.
 
 ```text
-Security Objectives
+                 Business Objectives
+                          │
+                          ▼
+                    Business Assets
+                          │
+                          ▼
+                   Threat Sources
+                          │
+                          ▼
+                       Threats
+                          │
+                          ▼
+                  Vulnerabilities
+                          │
+                          ▼
+                   Risk Assessment
+                          │
+                          ▼
+                 Security Objectives
+                          │
+                          ▼
+                  Security Controls
+                          │
+                          ▼
+                  Secure Architecture
+```
+
+Cada uno de estos elementos responde una pregunta distinta.
+
+En conjunto forman un modelo utilizado para comprender cómo proteger una aplicación desde una perspectiva de ingeniería y justificar las decisiones de seguridad en función del riesgo que intentan reducir.
+
+Los próximos capítulos desarrollarán cada uno de estos conceptos de forma independiente y mostrarán cómo se relacionan dentro del proceso de desarrollo seguro.
+
+---
+
+# 👥 ¿A quién está dirigido este documento?
+
+Este documento está orientado a profesionales que deseen comprender los fundamentos de Application Security desde una perspectiva práctica y de ingeniería.
+
+Entre ellos:
+
+- Software Engineers.
+- Application Security Engineers.
+- Security Architects.
+- DevSecOps Engineers.
+- Technical Leads.
+- Pentesters interesados en Secure Design.
+- Estudiantes de ciberseguridad.
+
+No se requieren conocimientos avanzados de Application Security.
+
+Sin embargo, resulta recomendable poseer nociones básicas sobre desarrollo de software, aplicaciones web, APIs y arquitectura cliente-servidor.
+
+---
+
+# 📖 Cómo utilizar este repositorio
+
+Este repositorio fue diseñado siguiendo un enfoque incremental.
+
+Cada documento introduce un conjunto reducido de conceptos que servirán como base para comprender los siguientes capítulos.
+
+Aunque los documentos pueden consultarse de forma independiente, se recomienda seguir el orden propuesto para construir progresivamente el modelo mental utilizado por los equipos de Application Security.
+
+```text
+Application Security Foundations
 │
-├── CIA Triad
 ├── Assets
+├── Threat Sources
 ├── Threats
 ├── Vulnerabilities
 ├── Risk
+├── Security Objectives
 ├── Security Controls
-├── Defense in Depth
-├── Least Privilege
-├── Threat Modeling
-└── Secure Design
+├── Connecting the Concepts
+├── Thinking Like an Application Security Engineer
+└── Engineering Principles
 ```
 
-Comprender cómo se relacionan estos conceptos permite analizar la seguridad de una aplicación desde una perspectiva sistémica y no únicamente desde la existencia de vulnerabilidades individuales.
+Una vez comprendidos estos fundamentos, el repositorio profundizará en temas como:
+
+- CIA in Application Security
+- Defense in Depth
+- Least Privilege
+- Attack Surface
+- Trust Boundaries
+- Secure by Design
+- Security Requirements
+- Threat Modeling
+- Secure Coding
+- Security Testing
+
+---
+
+> 💡 **Idea clave**
+>
+> Este documento no pretende enseñar todas las disciplinas de Application Security.
+>
+> Su objetivo consiste en construir el modelo mental necesario para comprender cómo se relacionan los activos, las amenazas, las vulnerabilidades, el riesgo y los controles dentro del proceso de desarrollo seguro de software.
 
 ---
 
 # 📚 Referencias
 
-Este documento sintetiza conceptos ampliamente utilizados por la industria y desarrollados por diferentes organismos y marcos de referencia.
+Este documento integra conceptos ampliamente utilizados por la industria y presentes en diferentes estándares y marcos de referencia.
 
 - NIST SP 800-30 — *Guide for Conducting Risk Assessments*
 - NIST SP 800-37 — *Risk Management Framework (RMF)*
 - NIST SP 800-53 — *Security and Privacy Controls for Information Systems and Organizations*
 - NIST SP 800-160 — *Systems Security Engineering*
+- NIST SP 800-218 — *Secure Software Development Framework (SSDF)*
 - FIPS 199 — *Standards for Security Categorization of Federal Information and Information Systems*
 - OWASP Application Security Verification Standard (ASVS)
 - OWASP Software Assurance Maturity Model (SAMM)
+- OWASP Secure by Design
 - OWASP Developer Guide
-- CISA — *Secure by Design / Secure by Default*
 - Microsoft Security Development Lifecycle (SDL)
-
----
+- CISA — *Secure by Design / Secure by Default*
 
 ---
 ---
