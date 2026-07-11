@@ -1,4 +1,4 @@
-# Seguridad de aplicaciones
+# Application Security
 
 📊 ¿Qué vas a encontrar?
 
