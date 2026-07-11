@@ -18,9 +18,9 @@ Todo control de seguridad puede justificarse en función de uno o más objetivos
 
 | Pilar | Objetivo |
 |--------|----------|
-| 🔒 Confidentiality | Evitar el acceso no autorizado a la información. |
-| ✅ Integrity | Garantizar que la información no sea modificada de forma indebida. |
-| ⚙️ Availability | Garantizar que la información y los servicios estén disponibles cuando se necesiten. |
+| 🔒 Confidentiality | Proteger la información frente al acceso no autorizado. |
+| ✅ Integrity | Proteger la información frente a modificaciones no autorizadas. |
+| ⚙️ Availability | Garantizar el acceso a la información y los servicios cuando sean necesarios. |
 
 ---
 
@@ -28,7 +28,7 @@ Todo control de seguridad puede justificarse en función de uno o más objetivos
 
 ## ¿Qué protege?
 
-La información debe ser accesible únicamente para sujetos autorizados, evitando tanto la divulgación como el acceso no autorizado.
+La información debe ser accesible únicamente para entidades autorizadas (usuarios, procesos o servicios), evitando tanto la divulgación como el acceso no autorizado.
 
 ### Ejemplos
 
@@ -40,13 +40,13 @@ La información debe ser accesible únicamente para sujetos autorizados, evitand
 
 ### Controles relacionados
 
-- Authentication
-- Authorization
-- Encryption
-- Secrets Management
-- Key Management
-- Data Classification
 - Access Control
+- Least Privilege
+- Strong Authentication
+- Encryption at Rest
+- Encryption in Transit
+- Secrets Management
+- Data Classification
 
 ---
 
@@ -65,13 +65,13 @@ Garantiza que la información permanezca exacta, consistente y protegida frente 
 
 ### Controles relacionados
 
-- Hashes
-- Digital Signatures
 - Input Validation
-- Audit Logs
-- Message Authentication Codes (MAC)
-- Checksums
-- Database Constraints
+- Integrity Verification
+- Digital Signature Validation
+- Change Control
+- Audit Logging
+- Data Validation
+- Database Integrity Controls
 
 ---
 
@@ -90,16 +90,14 @@ Garantiza que los sistemas y la información puedan utilizarse cuando sean neces
 
 ### Controles relacionados
 
-- Backups
 - High Availability
-- Load Balancing
-- Monitoring
-- Disaster Recovery
 - Redundancy
 - Fault Tolerance
-- Auto Scaling
-- Rate Limiting
-- Capacity Planning
+- Capacity Management
+- Disaster Recovery
+- Backup and Recovery
+- Resilience Monitoring
+- Resource Protection
 
 ---
 
@@ -128,31 +126,23 @@ Estos principios están presentes en múltiples actividades del ciclo de desarro
 - Security Testing
 - Risk Assessment
 
-Comprender cómo una vulnerabilidad impacta la **Confidentiality**, **Integrity** y/o **Availability** permite priorizar riesgos, seleccionar controles adecuados y tomar decisiones de diseño más informadas.
+Comprender cómo una vulnerabilidad impacta la **Confidentiality**, **Integrity** y/o **Availability** permite priorizar riesgos, seleccionar controles adecuados y tomar mejores decisiones de diseño.
 
 ---
 
 # ⚠️ Errores comunes
 
 - Pensar que la seguridad consiste únicamente en proteger la confidencialidad.
-- Analizar vulnerabilidades sin evaluar qué principios afectan.
-- Diseñar controles considerando solo ataques externos.
+- Analizar vulnerabilidades sin evaluar su impacto sobre la Confidentiality, Integrity y Availability.
+- Confundir objetivos de seguridad (CIA) con controles o mecanismos de seguridad.
+- Diseñar controles considerando únicamente amenazas externas e ignorando amenazas internas, errores de configuración o fallas de diseño.
 
 ---
 
 # ✅ Buenas prácticas
 
-- Analizar el impacto de cada vulnerabilidad sobre la tríada CIA.
-- Diseñar controles considerando los tres principios.
-- Utilizar la CIA como referencia durante el Threat Modeling.
-
+- Evaluar el impacto de amenazas y vulnerabilidades sobre la Confidentiality, Integrity y Availability.
+- Definir controles de seguridad en función de los objetivos de seguridad del sistema.
+- Utilizar la tríada CIA como referencia durante el Threat Modeling y el Secure Design.
+- Priorizar los controles según el riesgo y los requisitos del negocio.
 ---
-
-# 📚 Conceptos relacionados
-
-- Defense in Depth
-- Least Privilege
-- Zero Trust
-- Threat Modeling
-- Risk
-- Attack Surface
