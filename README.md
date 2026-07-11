@@ -37,7 +37,7 @@ Análisis de herramientas utilizadas durante el ciclo de vida de una aplicación
 📖 **Casos Reales**  
 Análisis técnico de vulnerabilidades e incidentes que marcaron la industria.
 
-🔄 **Proyecto Vivo**  
+🔄 **Proyecto en evolución**  
 Repositorio actualizado continuamente con nuevo contenido y mejoras.
 
 ---
