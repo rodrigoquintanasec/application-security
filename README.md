@@ -42,7 +42,7 @@ Repositorio actualizado continuamente con nuevo contenido y mejoras.
 
 ---
 
-# 🗺️ Mapa del conocimiento
+# 🗺️ Mapa del conocimiento#
 
 ```mermaid
 flowchart TD
